@@ -3,22 +3,22 @@ from langchain_core.documents import Document
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
-DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+CORPUS_DIR = os.path.join(os.path.dirname(__file__), "corpus")
 INDEX_PATH = os.path.join(os.path.dirname(__file__), "faiss_index")
 
 def load_docs():
     docs = []
-    for p in sorted(glob.glob(os.path.join(DATA_DIR, "*.txt"))):
+    for p in sorted(glob.glob(os.path.join(CORPUS_DIR, "*.txt"))):
         with open(p, "r", encoding="utf-8") as f:
             text = f.read().strip()
         docs.append(Document(page_content=text, metadata={"source": os.path.basename(p)}))
     return docs
 
 def main():
-    os.makedirs(DATA_DIR, exist_ok=True)
+    os.makedirs(CORPUS_DIR, exist_ok=True)
     docs = load_docs()
     if not docs:
-        raise SystemExit("No .txt files found in demo/data")
+        raise SystemExit("No .txt files found in demo/corpus")
     embed = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     vs = FAISS.from_documents(docs, embed)
     vs.save_local(INDEX_PATH)
