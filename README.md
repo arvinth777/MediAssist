@@ -1,5 +1,10 @@
 # MediAssist RAG - Maternal Health QA System
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://mediassist-rag-9mblcgtthnnenruigzvydn.streamlit.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **🚀 [Try the Live Demo](https://mediassist-rag-9mblcgtthnnenruigzvydn.streamlit.app/)** - Interactive maternal health Q&A powered by AI
+
 A Retrieval-Augmented Generation (RAG) system for maternal health question answering, built with FAISS vector search and local language models.
 
 ## 🎯 Features
@@ -64,6 +69,16 @@ setup.sh               # One-command installation script
 EXAMPLES.md            # 15 sample queries
 LICENSE                # MIT License
 ```
+
+## 🌐 Live Demo
+
+**Try it now:** [https://mediassist-rag-9mblcgtthnnenruigzvydn.streamlit.app/](https://mediassist-rag-9mblcgtthnnenruigzvydn.streamlit.app/)
+
+The live demo includes:
+- 🎛️ **Dual Mode**: Toggle between Fast Retrieval and Full RAG
+- 💡 **Example Questions**: Pre-loaded maternal health queries
+- 💬 **Conversation History**: Track your Q&A session
+- 📚 **Source Citations**: View retrieved medical documents
 
 ## 🚀 Quick Start
 
@@ -205,10 +220,10 @@ Deploy your MediAssist-RAG app to the cloud for free:
 - **Custom Domain**: Available on paid plans
 
 ### Example Deployment
-Once deployed, your app will be available at:
-```
-https://your-username-mediassist-rag-demo-streamlit-app-xyz123.streamlit.app
-```
+
+**✅ This project is deployed!** Check out the live demo:
+
+**[https://mediassist-rag-9mblcgtthnnenruigzvydn.streamlit.app/](https://mediassist-rag-9mblcgtthnnenruigzvydn.streamlit.app/)**
 
 ## 📊 Performance
 
