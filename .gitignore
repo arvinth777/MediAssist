@@ -13,7 +13,8 @@ ENV/
 .ipynb_checkpoints
 
 # FAISS index (binary files - regenerate locally)
-demo/faiss_index/
+# Commented out for Streamlit Cloud deployment - index needs to be in repo
+# demo/faiss_index/
 
 # Models cache
 .cache/

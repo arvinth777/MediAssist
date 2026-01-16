@@ -55,6 +55,7 @@ A Retrieval-Augmented Generation (RAG) system for maternal health question answe
 demo/
 ├── corpus/            # 10 maternal health text files
 ├── faiss_index/       # Pre-built FAISS vector store
+├── streamlit_app.py   # ⭐ Enhanced demo (recommended)
 ├── app.py             # Full RAG app with FLAN-T5
 ├── app_fast.py        # Fast retrieval-only version
 ├── ingest.py          # Script to build FAISS index
@@ -99,12 +100,22 @@ This will:
 
 **3. Run the App**
 
-**Option A: Fast retrieval-only (< 1 second response)**
+**Option A: Enhanced Demo (Recommended) 🌟**
+```bash
+streamlit run demo/streamlit_app.py
+```
+Features:
+- Toggle between Fast Retrieval and Full RAG modes
+- Example questions in sidebar
+- Conversation history
+- Modern, professional UI
+
+**Option B: Fast retrieval-only (< 1 second response)**
 ```bash
 streamlit run demo/app_fast.py
 ```
 
-**Option B: Full RAG with LLM (5-10 seconds response)**
+**Option C: Full RAG with LLM (5-10 seconds response)**
 ```bash
 streamlit run demo/app.py
 ```
@@ -157,10 +168,54 @@ In `app.py` or `app_fast.py`, modify the retriever parameters:
 return vs.as_retriever(search_kwargs={"k": 5})  # Retrieve top-5 instead of top-3
 ```
 
+## � Deploy to Streamlit Cloud
+
+Deploy your MediAssist-RAG app to the cloud for free:
+
+### Prerequisites
+1. Push your code to a GitHub repository
+2. Sign up at [share.streamlit.io](https://share.streamlit.io)
+
+### Deployment Steps
+
+1. **Prepare Your Repository**
+   ```bash
+   git add .
+   git commit -m "Add MediAssist-RAG Streamlit demo"
+   git push origin main
+   ```
+
+2. **Deploy on Streamlit Cloud**
+   - Go to [share.streamlit.io](https://share.streamlit.io)
+   - Click "New app"
+   - Select your repository
+   - Set main file path: `demo/streamlit_app.py`
+   - Click "Deploy"
+
+3. **Configuration**
+   - Streamlit Cloud will automatically install dependencies from `demo/requirements.txt`
+   - The FAISS index will be loaded from the committed `demo/faiss_index/` directory
+   - First deployment may take 5-10 minutes
+
+### Deployment Tips
+
+- **Recommended Mode**: Use "Fast Retrieval" mode for public demos (better performance on free tier)
+- **Model Loading**: First visitor will trigger model downloads (~340MB), subsequent visits will be faster
+- **Resource Limits**: Streamlit Cloud free tier has memory limits - Full RAG mode may be slower
+- **Custom Domain**: Available on paid plans
+
+### Example Deployment
+Once deployed, your app will be available at:
+```
+https://your-username-mediassist-rag-demo-streamlit-app-xyz123.streamlit.app
+```
+
 ## 📊 Performance
 
 | Mode | Response Time | Model Size | Quality |
 |------|--------------|------------|---------|
+| Enhanced Demo (Fast) | < 1s | 90MB | Shows raw context with modern UI |
+| Enhanced Demo (Full RAG) | 5-10s | 250MB | Generated answers with citations + UI |
 | Fast (retrieval-only) | < 1s | 90MB | Shows raw context |
 | Full RAG (FLAN-T5) | 5-10s | 250MB | Generated answers with citations |
 
